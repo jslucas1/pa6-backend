@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using api.database;
+using api.models;
 
 namespace api.Controllers
 {
@@ -13,9 +15,10 @@ namespace api.Controllers
     {
         // GET: api/books
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Book> Get()
         {
-            return new string[] { "value1", "value2" };
+            ReadBook readObj = new ReadBook();
+            return readObj.GetAllBooks();
         }
 
         // GET: api/books/5
