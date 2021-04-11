@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using api.database;
 using api.models;
+using Microsoft.AspNetCore.Cors;
 
 namespace api.Controllers
 {
