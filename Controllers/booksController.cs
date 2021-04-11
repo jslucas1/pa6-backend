@@ -14,6 +14,7 @@ namespace api.Controllers
     public class booksController : ControllerBase
     {
         // GET: api/books
+        [EnableCors("AnotherPolicy")]
         [HttpGet]
         public List<Book> Get()
         {
@@ -22,6 +23,7 @@ namespace api.Controllers
         }
 
         // GET: api/books/5
+        [EnableCors("AnotherPolicy")]
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
@@ -29,18 +31,21 @@ namespace api.Controllers
         }
 
         // POST: api/books
+        [EnableCors("AnotherPolicy")]
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
         // PUT: api/books/5
+        [EnableCors("AnotherPolicy")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/books/5
+        [EnableCors("AnotherPolicy")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
