@@ -12,6 +12,7 @@ namespace api.models
         public int NumAvlb { get; set; }
         public string Isbn { get; set; }
         public int Length { get; set; }
+        public string Cover { get; set; }
 
         public ISaveBook Save { get; set; }
 
