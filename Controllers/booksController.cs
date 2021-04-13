@@ -25,10 +25,11 @@ namespace api.Controllers
 
         // GET: api/books/5
         [EnableCors("AnotherPolicy")]
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{cwid}", Name = "Get")]
+        public List<Book> Get(string cwid)
         {
-            return "value";
+            ReadBook readObj = new ReadBook();
+            return readObj.GetBooksByCwid(cwid);
         }
 
         // POST: api/books
