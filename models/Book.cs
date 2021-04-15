@@ -13,12 +13,19 @@ namespace api.models
         public string Isbn { get; set; }
         public int Length { get; set; }
         public string Cover { get; set; }
+        public string Cwid { get; set; }
 
-        public ISaveBook Save { get; set; }
+        public ISaveBook SaveAction { get; set; }
 
         public Book()
         {
-            Save = new SaveBook();
+            SaveAction = new SaveBook();
+        }
+
+        public override string ToString()
+        {
+            string text = $"{Id} {Title} {Author} {Genre} {NumAvlb} {Isbn} {Length} {Cover}";
+            return text;
         }
     }
 }

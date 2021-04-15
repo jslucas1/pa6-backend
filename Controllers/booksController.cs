@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using api.database;
 using api.models;
+using api.interfaces;
 using Microsoft.AspNetCore.Cors;
 
 namespace api.Controllers
@@ -34,23 +35,30 @@ namespace api.Controllers
 
         // POST: api/books
         [EnableCors("AnotherPolicy")]
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{cwid}")]
+        public void Post(string cwid, [FromBody] Book value)
         {
+            value.Cwid = cwid;
+            value.SaveAction.CreateBook(value);
         }
 
         // PUT: api/books/5
         [EnableCors("AnotherPolicy")]
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{cwid}/{id}")]
+        public void Put(string cwid, int id, [FromBody] Book value)
         {
+            Console.WriteLine(value.Title + " " + value.Id);
+            value.SaveAction.Save(value);
         }
 
         // DELETE: api/books/5
         [EnableCors("AnotherPolicy")]
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{cwid}/{id}")]
+        public void Delete(string cwid, int id)
         {
+            Console.WriteLine("Made it to the delete with cwid " + cwid + " and id " + id);
+            IDeleteBook delete = new DeleteBook();
+            delete.Delete(id);
         }
     }
 }
